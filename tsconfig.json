@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ES2015",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": ["node", "@playwright/test"],
+    "baseUrl": "."
+  },
+  "include": [
+    "tests/**/*.ts",
+    "pages/**/*.ts",
+    //"utils/**/*.ts",
+    "playwright.config.ts"
+  ]
+}
