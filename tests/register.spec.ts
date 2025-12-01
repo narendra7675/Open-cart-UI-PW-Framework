@@ -27,7 +27,7 @@ function getRadomEmailId(): string {
 }
 
 for (let user of registrationData) {
-  test(`verify user is able to register ${user.firstName} @p0 @sanity`, async ({
+  test(`verify user is able to register ${user.firstName} @p0 @regression`, async ({
     page,
     baseURL,
   }) => {
