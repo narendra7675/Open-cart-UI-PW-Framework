@@ -146,6 +146,6 @@ jobs:
       - name: Report URLs
         run: |
           echo "Reports Published!"
-          echo "Playwright Built-in: https://naveenanimation20.github.io/June2025PWFramework/playwright-report/index.html"
-          echo "Playwright HTML Reporter: https://naveenanimation20.github.io/June2025PWFramework/playwright-html-report/index.html"
-          echo "Allure: https://naveenanimation20.github.io/June2025PWFramework/allure-report/index.html"
+          echo "Playwright Built-in: https://narendra7675.github.io/Open-cart-UI-PW-Framework/playwright-report/index.html"
+          echo "Playwright HTML Reporter: https://narendra7675.github.io/Open-cart-UI-PW-Framework/playwright-html-report/index.html"
+          echo "Allure: https://narendra7675.github.io/Open-cart-UI-PW-Framework/allure-report/index.html"
