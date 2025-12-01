@@ -1,4 +1,4 @@
-# PWDemo Automation Reports
+# Open-cart-UI-PW-Framework Automation Reports
 
 Welcome to the **Open-cart-UI-PW-Framework** automation project. Below you can find the latest test results and HTML reports.
 
