@@ -1,20 +1,20 @@
 // import {test, expect} from "@playwright/test";
 // import {LoginPage} from "../pages/LoginPage";
 // import {HomePage} from "pages/HomePage";
-import {ResultsPage} from "pages/ResultsPage";
-import {ProductInfoPage} from "pages/ProductInfoPage";
-import {test, expect} from "../fixtures/baseFixture";
+import {ResultsPage} from 'pages/ResultsPage';
+import {ProductInfoPage} from 'pages/ProductInfoPage';
+import {test, expect} from '../fixtures/baseFixture';
 
 let search = [
-  {searchkey: "macbook", productname: "MacBook Pro", imagecount: 4},
-  {searchkey: "macbook", productname: "MacBook Air", imagecount: 4},
-  {searchkey: "samsung", productname: "Samsung Galaxy Tab 10.1", imagecount: 7},
+  {searchkey: 'macbook', productname: 'MacBook Pro', imagecount: 4},
+  {searchkey: 'macbook', productname: 'MacBook Air', imagecount: 4},
+  {searchkey: 'samsung', productname: 'Samsung Galaxy Tab 10.1', imagecount: 7},
 ];
 
 for (let product of search) {
   test(
     `verify product header ${product.productname}`,
-    {tag: ["@sanity", "@regression"]},
+    {tag: ['@sanity', '@regression']},
     async ({homePage}) => {
       let resultsPage: ResultsPage = await homePage.doSearch(product.searchkey);
       let productInfoPage: ProductInfoPage = await resultsPage.selectProduct(
@@ -30,7 +30,7 @@ for (let product of search) {
 for (let product of search) {
   test(
     `verify product Images ${product.productname} : ${product.imagecount}`,
-    {tag: ["@sanity"]},
+    {tag: ['@sanity']},
     async ({homePage}) => {
       let resultsPage: ResultsPage = await homePage.doSearch(product.searchkey);
       let productInfoPage: ProductInfoPage = await resultsPage.selectProduct(
@@ -44,29 +44,29 @@ for (let product of search) {
 }
 
 test(`verify the product metadata`, async ({homePage}) => {
-  let resultsPage: ResultsPage = await homePage.doSearch("macbook");
+  let resultsPage: ResultsPage = await homePage.doSearch('macbook');
   let productInfoPage: ProductInfoPage = await resultsPage.selectProduct(
-    "MacBook Pro"
+    'MacBook Pro'
   );
 
   let actualProductFullDetails = await productInfoPage.getProductDetails();
-  expect.soft(actualProductFullDetails.get("header")).toBe("MacBook Pro");
-  expect.soft(actualProductFullDetails.get("Brand")).toBe("Apple");
-  expect.soft(actualProductFullDetails.get("Product Code")).toBe("Product 18");
-  expect.soft(actualProductFullDetails.get("Reward Points")).toBe("800");
+  expect.soft(actualProductFullDetails.get('header')).toBe('MacBook Pro');
+  expect.soft(actualProductFullDetails.get('Brand')).toBe('Apple');
+  expect.soft(actualProductFullDetails.get('Product Code')).toBe('Product 18');
+  expect.soft(actualProductFullDetails.get('Reward Points')).toBe('800');
   expect
-    .soft(actualProductFullDetails.get("Availability"))
-    .toBe("Out Of Stock");
+    .soft(actualProductFullDetails.get('Availability'))
+    .toBe('Out Of Stock');
 });
 
 test(`verify the product pricing`, async ({homePage}) => {
-  let resultsPage: ResultsPage = await homePage.doSearch("macbook");
+  let resultsPage: ResultsPage = await homePage.doSearch('macbook');
   let productInfoPage: ProductInfoPage = await resultsPage.selectProduct(
-    "MacBook Pro"
+    'MacBook Pro'
   );
 
   let actualProductFullDetails = await productInfoPage.getProductDetails();
-  expect.soft(actualProductFullDetails.get("header")).toBe("MacBook Pro");
-  expect.soft(actualProductFullDetails.get("price")).toBe("$2,000.00");
-  expect.soft(actualProductFullDetails.get("extaxprice")).toBe("$2,000.00");
+  expect.soft(actualProductFullDetails.get('header')).toBe('MacBook Pro');
+  expect.soft(actualProductFullDetails.get('price')).toBe('$2,000.00');
+  expect.soft(actualProductFullDetails.get('extaxprice')).toBe('$2,000.00');
 });

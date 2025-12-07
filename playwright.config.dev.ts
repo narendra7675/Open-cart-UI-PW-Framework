@@ -1,5 +1,4 @@
-import { defineConfig, devices } from '@playwright/test';
-
+import {defineConfig, devices} from '@playwright/test';
 
 export default defineConfig({
   testDir: './tests',
@@ -12,100 +11,102 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-   reporter: [
+  reporter: [
     ['html'],
     ['list'],
     ['allure-playwright'],
-    ['playwright-html-reporter', { 
-      testFolder: 'tests',
-      title: 'OPEN CART HTML Report',
-      project: 'Open Cart',
-      release: '9.87.6',
-      testEnvironment: 'PROD',
-      embedAssets: true,
-      embedAttachments: true,
-      outputFolder: 'playwright-html-report',
-      minifyAssets: true,
-      startServer: false,
-    }]
+    [
+      'playwright-html-reporter',
+      {
+        testFolder: 'tests',
+        title: 'OPEN CART HTML Report',
+        project: 'Open Cart',
+        release: '9.87.6',
+        testEnvironment: 'PROD',
+        embedAssets: true,
+        embedAttachments: true,
+        outputFolder: 'playwright-html-report',
+        minifyAssets: true,
+        startServer: false,
+      },
+    ],
   ],
-  
+
   use: {
     trace: 'on-first-retry',
-    headless: !!process.env.CI,  // false locally, true in CI
+    headless: !!process.env.CI, // false locally, true in CI
     screenshot: 'on-first-failure',
     video: 'on',
     baseURL: 'https://naveenautomationlabs.com/opencart/index.php',
-    
   },
 
   metadata: {
     appUsername: 'test123@test.com',
-    appPassword: 'test'
+    appPassword: 'test',
   },
 
   /* Configure projects for major browsers */
   projects: [
-  {
-    name: 'Google Chrome',
-    use: {
-      channel: 'chrome',
-      viewport: null,
-      launchOptions: {
-        args: ['--start-maximized'],
-        ignoreDefaultArgs: ['--window-size=1280,720']
-      }
-    }
-  },
+    {
+      name: 'Google Chrome',
+      use: {
+        channel: 'chrome',
+        viewport: null,
+        launchOptions: {
+          args: ['--start-maximized'],
+          ignoreDefaultArgs: ['--window-size=1280,720'],
+        },
+      },
+    },
 
-  // {
-  //   name: 'Microsoft Edge',
-  //   use: {
-  //     channel: 'msedge',
-  //     viewport: null,
-  //     launchOptions: {
-  //       args: ['--start-maximized'],
-  //       ignoreDefaultArgs: ['--window-size=1280,720']
-  //     }
-  //   }
-  // },
+    // {
+    //   name: 'Microsoft Edge',
+    //   use: {
+    //     channel: 'msedge',
+    //     viewport: null,
+    //     launchOptions: {
+    //       args: ['--start-maximized'],
+    //       ignoreDefaultArgs: ['--window-size=1280,720']
+    //     }
+    //   }
+    // },
 
-  // {
-  //   name: 'Chromium',
-  //   use: {
-  //     browserName: 'chromium',
-  //     viewport: { width: 1920, height: 1080 },
-  //     launchOptions: {
-  //       args: [],
-  //       ignoreDefaultArgs: ['--window-size=1280,720']
-  //     }
-  //   }
-  // },
+    // {
+    //   name: 'Chromium',
+    //   use: {
+    //     browserName: 'chromium',
+    //     viewport: { width: 1920, height: 1080 },
+    //     launchOptions: {
+    //       args: [],
+    //       ignoreDefaultArgs: ['--window-size=1280,720']
+    //     }
+    //   }
+    // },
 
-  // {
-  //   name: 'Firefox',
-  //   use: {
-  //     browserName: 'firefox',
-  //     viewport: { width: 1920, height: 1080 },       
-  //     launchOptions: {
-  //       args: [],
-  //       ignoreDefaultArgs: ['--window-size=1280,720']
-  //     }
-  //   }
-  // },
+    // {
+    //   name: 'Firefox',
+    //   use: {
+    //     browserName: 'firefox',
+    //     viewport: { width: 1920, height: 1080 },
+    //     launchOptions: {
+    //       args: [],
+    //       ignoreDefaultArgs: ['--window-size=1280,720']
+    //     }
+    //   }
+    // },
 
-  // {
-  //   name: 'WebKit',
-  //   use: {
-  //     browserName: 'webkit',
-  //     viewport: { width: 1920, height: 1080 },      
-  //     launchOptions: {
-  //       args: [],
-  //       ignoreDefaultArgs: ['--window-size=1280,720']
-  //     }
-  //   }
-  // }
-],
+    // {
+    //   name: 'WebKit',
+    //   use: {
+    //     browserName: 'webkit',
+    //     viewport: { width: 1920, height: 1080 },
+    //     launchOptions: {
+    //       args: [],
+    //       ignoreDefaultArgs: ['--window-size=1280,720']
+    //     }
+    //   }
+    // }
+  ],
 
   /* Run your local dev server before starting the tests */
   // webServer: {

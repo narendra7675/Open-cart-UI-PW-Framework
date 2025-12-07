@@ -1,6 +1,6 @@
-import {expect, test as base} from "@playwright/test";
-import fs from "fs";
-import {parse} from "csv-parse/sync";
+import {expect, test as base} from '@playwright/test';
+import fs from 'fs';
+import {parse} from 'csv-parse/sync';
 
 //schema/type of reg data fields
 type RegData = {
@@ -20,7 +20,7 @@ type csvFixture = {
 export const dataTest = base.extend<csvFixture>({
   regData: async ({}, use) => {
     //read register.csv file content
-    let fileContent = fs.readFileSync("./data/register.csv", "utf-8");
+    let fileContent = fs.readFileSync('./data/register.csv', 'utf-8');
     let registrationData: RegData[] = parse(fileContent, {
       columns: true,
       skip_empty_lines: true,

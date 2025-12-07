@@ -1,6 +1,6 @@
-import {Locator, Page} from "@playwright/test";
-import {ElementUtil} from "../../utils/ElementUtil";
-import {ProductInfoPage} from "./ProductInfoPage1";
+import {Locator, Page} from '@playwright/test';
+import {ElementUtil} from '../../utils/ElementUtil';
+import {ProductInfoPage} from './ProductInfoPage1';
 
 export class ResultsPage {
   //1. page locators/objects/object repositories (OR):
@@ -13,7 +13,7 @@ export class ResultsPage {
   constructor(page: Page) {
     this.page = page;
     this.eleUtil = new ElementUtil(page);
-    this.results = page.locator(".product-thumb"); //this is giving me count of products visible on the page.
+    this.results = page.locator('.product-thumb'); //this is giving me count of products visible on the page.
   }
 
   //3. Page actions:
@@ -26,7 +26,7 @@ export class ResultsPage {
   async selectProduct(productName: string) {
     console.log(`product name: ${productName}`);
     await this.eleUtil.click(
-      this.page.getByRole("link", {name: `${productName}`})
+      this.page.getByRole('link', {name: `${productName}`})
     );
     return new ProductInfoPage(this.page);
   }

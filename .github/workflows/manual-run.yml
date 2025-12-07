@@ -14,9 +14,9 @@ on:
   workflow_dispatch:
     inputs:
       environment:
-        description: "Select Environment"
+        description: 'Select Environment'
         required: true
-        default: "qa"
+        default: 'qa'
         type: choice
         options:
           - dev
@@ -25,9 +25,9 @@ on:
           - prod
 
       browser:
-        description: "Select Browser"
+        description: 'Select Browser'
         required: true
-        default: "Google Chrome"
+        default: 'Google Chrome'
         type: choice
         options:
           - Google Chrome
@@ -37,7 +37,7 @@ on:
           - WebKit
 
 env:
-  NODE_VERSION: "20"
+  NODE_VERSION: '20'
 
 jobs:
   test:
@@ -54,7 +54,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: "npm"
+          cache: 'npm'
 
       - name: 📚 Install dependencies
         run: npm ci
@@ -160,8 +160,8 @@ jobs:
       - name: 📦 Setup Java (for Allure)
         uses: actions/setup-java@v4
         with:
-          distribution: "temurin"
-          java-version: "17"
+          distribution: 'temurin'
+          java-version: '17'
 
       - name: 📊 Install Allure CLI
         run: |

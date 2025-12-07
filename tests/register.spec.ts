@@ -1,8 +1,8 @@
-import {test, expect} from "@playwright/test";
-import {LoginPage} from "../pages/LoginPage";
-import {RegisterPage} from "pages/RegisterPage";
-import fs from "fs";
-import {parse} from "csv-parse/sync";
+import {test, expect} from '@playwright/test';
+import {LoginPage} from '../pages/LoginPage';
+import {RegisterPage} from 'pages/RegisterPage';
+import fs from 'fs';
+import {parse} from 'csv-parse/sync';
 
 //schema/type of reg data fields
 type RegData = {
@@ -14,7 +14,7 @@ type RegData = {
 };
 
 //read register.csv file content
-let fileContent = fs.readFileSync("./data/register.csv", "utf-8");
+let fileContent = fs.readFileSync('./data/register.csv', 'utf-8');
 let registrationData: RegData[] = parse(fileContent, {
   columns: true,
   skip_empty_lines: true,

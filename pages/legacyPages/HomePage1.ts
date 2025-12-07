@@ -1,7 +1,7 @@
-import {Locator, Page} from "@playwright/test";
-import {ElementUtil} from "../../utils/ElementUtil";
-import {LoginPage} from "./LoginPage1";
-import {ResultsPage} from "./ResultsPage1";
+import {Locator, Page} from '@playwright/test';
+import {ElementUtil} from '../../utils/ElementUtil';
+import {LoginPage} from './LoginPage1';
+import {ResultsPage} from './ResultsPage1';
 
 export class HomePage {
   //1. page locators/objects/object repositories (OR):
@@ -17,9 +17,9 @@ export class HomePage {
   constructor(page: Page) {
     this.page = page;
     this.eleUtil = new ElementUtil(page);
-    this.loginLink = page.getByRole("link", {name: "Login"});
-    this.logoutLink = page.getByRole("link", {name: "Logout"});
-    this.search = page.getByRole("textbox", {name: "Search"});
+    this.loginLink = page.getByRole('link', {name: 'Login'});
+    this.logoutLink = page.getByRole('link', {name: 'Logout'});
+    this.search = page.getByRole('textbox', {name: 'Search'});
     this.searchIcon = page.locator(
       `#search > span.input-group-btn > button.btn`
     );

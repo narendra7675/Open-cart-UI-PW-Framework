@@ -1,4 +1,4 @@
-import {Page, Locator, expect} from "@playwright/test";
+import {Page, Locator, expect} from '@playwright/test';
 
 type flexibleLocator = string | Locator;
 
@@ -18,7 +18,7 @@ export class ElementUtil {
    * @returns
    */
   private getLocator(locator: flexibleLocator, index?: number): Locator {
-    if (typeof locator === "string") {
+    if (typeof locator === 'string') {
       if (index) {
         return this.page.locator(locator).nth(index);
       } else {
@@ -68,7 +68,7 @@ export class ElementUtil {
    */
   async rightClick(locator: flexibleLocator): Promise<void> {
     await this.getLocator(locator).click({
-      button: "right",
+      button: 'right',
       timeout: this.defaultTimeOut,
     });
     console.log(`Right Clicked on element : ${locator}`);
@@ -219,7 +219,7 @@ export class ElementUtil {
     timeout: number = 5000
   ): Promise<boolean> {
     try {
-      await this.getLocator(locator).waitFor({state: "visible", timeout});
+      await this.getLocator(locator).waitFor({state: 'visible', timeout});
       console.log(`waited for element to be visible `);
       return true;
     } catch {
@@ -235,7 +235,7 @@ export class ElementUtil {
     timeout: number = 5000
   ): Promise<boolean> {
     try {
-      await this.getLocator(locator).waitFor({state: "attached", timeout});
+      await this.getLocator(locator).waitFor({state: 'attached', timeout});
       console.log(`waited for element to be visible `);
       return true;
     } catch {
@@ -247,7 +247,7 @@ export class ElementUtil {
    * wait for page load state
    */
   async waitForPageLoad(
-    state: "load" | "domcontentloaded" | "networkidle" = "load"
+    state: 'load' | 'domcontentloaded' | 'networkidle' = 'load'
   ): Promise<void> {
     await this.page.waitForLoadState(state);
     console.log(`waitd for page load state: ${state}`);

@@ -1,5 +1,5 @@
-import {Locator, Page} from "@playwright/test";
-import {ElementUtil} from "../../utils/ElementUtil";
+import {Locator, Page} from '@playwright/test';
+import {ElementUtil} from '../../utils/ElementUtil';
 
 export class ProductInfoPage {
   private readonly page: Page;
@@ -44,8 +44,8 @@ export class ProductInfoPage {
    * @returns this method is returning complete product information: header, images count, meta data & pricing data.
    */
   async getProductDetails(): Promise<Map<string, string | null | number>> {
-    this.productMap.set("header", await this.getProductHeader());
-    this.productMap.set("imagecount", await this.getProductImagesCount());
+    this.productMap.set('header', await this.getProductHeader());
+    this.productMap.set('imagecount', await this.getProductImagesCount());
     await this.getProductMetaData();
     await this.getProductPricingData();
 
@@ -66,7 +66,7 @@ export class ProductInfoPage {
   private async getProductMetaData() {
     let productMetaData: string[] = await this.productMetaData.allInnerTexts();
     for (let meta of productMetaData) {
-      let metaData: string[] = meta.split(":");
+      let metaData: string[] = meta.split(':');
       let metaKey: string = metaData[0].trim();
       let metaValue: string = metaData[1].trim();
 
@@ -79,9 +79,9 @@ export class ProductInfoPage {
   private async getProductPricingData() {
     let productPricing: string[] = await this.productPriceData.allInnerTexts();
     let productPrice: string = productPricing[0].trim();
-    let productExTax: string = productPricing[1].split(":")[1].trim();
+    let productExTax: string = productPricing[1].split(':')[1].trim();
 
-    this.productMap.set("price", productPrice);
-    this.productMap.set("extaxprice", productExTax);
+    this.productMap.set('price', productPrice);
+    this.productMap.set('extaxprice', productExTax);
   }
 }

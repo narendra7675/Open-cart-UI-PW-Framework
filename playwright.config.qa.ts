@@ -1,7 +1,7 @@
-import {defineConfig, devices} from "@playwright/test";
+import {defineConfig, devices} from '@playwright/test';
 
 export default defineConfig({
-  testDir: "./tests",
+  testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -11,20 +11,20 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   reporter: [
-    ["html"],
-    ["list"],
-    ["allure-playwright"],
+    ['html'],
+    ['list'],
+    ['allure-playwright'],
     [
-      "playwright-html-reporter",
+      'playwright-html-reporter',
       {
-        testFolder: "tests",
-        title: "OPEN CART HTML Report",
-        project: "Open Cart",
-        release: "9.87.6",
-        testEnvironment: "QA",
+        testFolder: 'tests',
+        title: 'OPEN CART HTML Report',
+        project: 'Open Cart',
+        release: '9.87.6',
+        testEnvironment: 'QA',
         embedAssets: true,
         embedAttachments: true,
-        outputFolder: "playwright-html-report",
+        outputFolder: 'playwright-html-report',
         minifyAssets: true,
         startServer: false, // Set to false for CI
       },
@@ -32,28 +32,28 @@ export default defineConfig({
   ],
 
   use: {
-    trace: "on-first-retry",
+    trace: 'on-first-retry',
     headless: !!process.env.CI, // false locally, true in CI
-    screenshot: "on-first-failure",
-    video: "on",
-    baseURL: "https://naveenautomationlabs.com/opencart/index.php",
+    screenshot: 'on-first-failure',
+    video: 'on',
+    baseURL: 'https://naveenautomationlabs.com/opencart/index.php',
   },
 
   metadata: {
-    appUsername: "narendraautomation@yopmail.com",
-    appPassword: "Test@1234567",
+    appUsername: 'narendraautomation@yopmail.com',
+    appPassword: 'Test@1234567',
   },
 
   /* Configure projects for major browsers */
   /* ✅ All browsers enabled for manual selection via --project flag */
   projects: [
     {
-      name: "Google Chrome",
+      name: 'Google Chrome',
       use: {
-        channel: "chrome",
+        channel: 'chrome',
         viewport: {width: 1920, height: 1080}, // ✅ Fixed viewport for CI (no --start-maximized in headless)
         launchOptions: {
-          args: ["--window-size=1920,1080"],
+          args: ['--window-size=1920,1080'],
         },
       },
     },
