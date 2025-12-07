@@ -12,8 +12,8 @@
     "test:prod": "playwright test --config=playwright.config.prod.ts",
     "lint": "eslint --ext .ts,.js . --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint --ext .ts,.js . --fix",
-    "lint:report": "cross-env-shell eslint --ext .ts,.js -f html -o eslint-report/index.html || true",
-    "lint:report:json": "cross-env-shell eslint --ext .ts,.js -f json -o eslint-report/eslint-results.json || true",
+    "lint:report": "eslint --ext .ts,.js -f html -o eslint-report/index.html || exit 0",
+    "lint:report:json": "eslint --ext .ts,.js -f json -o eslint-report/eslint-results.json || exit 0",
     "allure:generate": "allure generate allure-results --clean -o allure-report",
     "allure:open": "allure open allure-report"
   },
@@ -28,7 +28,6 @@
     "@typescript-eslint/parser": "^7.0.0",
     "allure-commandline": "^2.34.1",
     "allure-playwright": "^3.4.2",
-    "cross-env-shell": "^7.0.3",
     "eslint": "^8.57.0",
     "playwright-html-reporter": "^0.1.11"
   },
