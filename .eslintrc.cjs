@@ -17,7 +17,7 @@ module.exports = {
     "@typescript-eslint/no-explicit-any": "warn",
     "no-console": "off",
     semi: ["error", "always"],
-    //quotes: ["warn", "single", {avoidEscape: true}],
+    quotes: ["warn", "single", {avoidEscape: true}],
   },
   ignorePatterns: [
     "node_modules/",
