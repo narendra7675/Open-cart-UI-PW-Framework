@@ -1,10 +1,9 @@
 # ============================================
 # OPTION 1: FULLY AUTOMATED PIPELINE
 # ============================================
-# Flow: lint → dev → qa → stage → prod (automatic)
+# Flow: dev → qa → stage → prod (automatic)
 # Trigger: Push to develop/main branches, cron schedule
 # Reports: Published to GitHub Pages
-# ✅ ESLint static code analysis - removed from code as of now.
 # ✅ Playwright browsers cached for faster runs
 # ✅ Allure environment labels for separation
 # ✅ Slack notifications for test results
@@ -42,66 +41,11 @@ env:
 
 jobs:
   # ============================================
-  # Static Code Analysis (ESLint)
-  # ============================================
-  # lint:
-  #   name: 🔍 ESLint Analysis
-  #   runs-on: ubuntu-latest
-
-  #   steps:
-  #     - name: 📥 Checkout code
-  #       uses: actions/checkout@v4
-
-  #     - name: 📦 Setup Node.js
-  #       uses: actions/setup-node@v4
-  #       with:
-  #         node-version: ${{ env.NODE_VERSION }}
-  #         cache: 'npm'
-
-  #     - name: 📚 Install dependencies
-  #       run: npm ci
-
-  #     - name: 📁 Create ESLint report directory
-  #       run: mkdir -p eslint-report
-
-  #     - name: 🔍 Run ESLint
-  #       id: eslint
-  #       run: npm run lint
-  #       continue-on-error: true
-
-  #     - name: 📊 Generate ESLint HTML Report
-  #       if: always()
-  #       run: npm run lint:report
-
-  #     - name: 📊 Upload ESLint Report
-  #       uses: actions/upload-artifact@v4
-  #       if: always()
-  #       with:
-  #         name: eslint-report
-  #         path: eslint-report/
-  #         retention-days: 30
-
-  #     - name: ✅ ESLint Summary
-  #       if: always()
-  #       run: |
-  #         echo "============================================"
-  #         echo "📊 ESLint Analysis Complete"
-  #         echo "============================================"
-  #         if [ "${{ steps.eslint.outcome }}" == "failure" ]; then
-  #           echo "⚠️ ESLint found issues - check the HTML report"
-  #         else
-  #           echo "✅ No ESLint issues found"
-  #         fi
-  #         echo "HTML Report: eslint-report/index.html"
-  #         echo "============================================"
-
-  # ============================================
   # DEV Environment Tests
   # =============================================
   dev-tests:
     name: 🔧 DEV Tests
     runs-on: ubuntu-latest
-    needs: lint
 
     steps:
       - name: 📥 Checkout code
@@ -497,14 +441,6 @@ jobs:
       - name: 📥 Checkout code
         uses: actions/checkout@v4
 
-      # ========== Download ESLint Report ==========
-      - name: 📥 Download ESLint Report
-        uses: actions/download-artifact@v4
-        with:
-          name: eslint-report
-          path: github-pages/eslint-report
-        continue-on-error: true
-
       # ========== Download All Artifacts ==========
       - name: 📥 Download DEV Playwright Report
         uses: actions/download-artifact@v4
@@ -687,11 +623,6 @@ jobs:
           <body>
             <h1>🎭 Playwright Test Reports</h1>
             <p class="timestamp">Last updated: ${CURRENT_DATE}</p>
-
-            <div class="env-section" style="border-left: 4px solid #3498db;">
-              <h3>🔍 Static Code Analysis</h3>
-              <a href="./eslint-report/index.html">ESLint Report</a>
-            </div>
 
             <div class="env-section dev">
               <h3>🔧 DEV Environment</h3>
