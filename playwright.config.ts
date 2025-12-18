@@ -1,7 +1,7 @@
-import {defineConfig, devices} from '@playwright/test';
+import {defineConfig, devices} from "@playwright/test";
 
 export default defineConfig({
-  testDir: './tests',
+  testDir: "./tests",
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -12,20 +12,20 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
-    ['html'],
-    ['list'],
-    ['allure-playwright'],
+    ["html"],
+    ["list"],
+    ["allure-playwright"],
     [
-      'playwright-html-reporter',
+      "playwright-html-reporter",
       {
-        testFolder: 'tests',
-        title: 'Playwright HTML Report',
-        project: 'QA Tests',
-        release: '9.87.6',
-        testEnvironment: 'DEV',
+        testFolder: "tests",
+        title: "Playwright HTML Report",
+        project: "QA Tests",
+        release: "9.87.6",
+        testEnvironment: "DEV",
         embedAssets: true,
         embedAttachments: true,
-        outputFolder: 'playwright-html-report',
+        outputFolder: "playwright-html-report",
         minifyAssets: true,
         startServer: false, //set to false for CI
       },
@@ -34,18 +34,23 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
-    baseURL: 'https://naveenautomationlabs.com/opencart/index.php',
+    baseURL: "https://naveenautomationlabs.com/opencart/index.php",
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
-    screenshot: 'on',
-    video: 'on',
+    trace: "on-first-retry",
+    screenshot: "on",
+    video: "on",
     headless: true,
+
+    httpCredentials: {
+      username: "admin",
+      password: "admin",
+    },
   },
 
   metadata: {
-    appUsername: 'pwtest@nal.com',
-    appPassword: 'test123',
+    appUsername: "pwtest@nal.com",
+    appPassword: "test123",
   },
 
   /* Configure projects for major browsers */
@@ -62,17 +67,17 @@ export default defineConfig({
     //   },
     // },
 
-    // {
-    //   name: "Google Chrome",
-    //   use: {
-    //     channel: "chrome",
-    //     viewport: null,
-    //     launchOptions: {
-    //       args: ["--start-maximized"],
-    //       ignoreDefaultArgs: ["--window-size=1280,720"],
-    //     },
-    //   },
-    // },
+    {
+      name: "Google Chrome",
+      use: {
+        channel: "chrome",
+        viewport: null,
+        launchOptions: {
+          args: ["--start-maximized"],
+          ignoreDefaultArgs: ["--window-size=1280,720"],
+        },
+      },
+    },
 
     // {
     //   name: "Microsoft Edge",
@@ -139,9 +144,9 @@ export default defineConfig({
     //   name: "Microsoft Edge",
     //   use: {...devices["Desktop Edge"], channel: "msedge"},
     // },
-    {
-      name: 'Google Chrome',
-      use: {...devices['Desktop Chrome'], channel: 'chrome'},
-    },
+    // {
+    //   name: 'Google Chrome',
+    //   use: {...devices['Desktop Chrome'], channel: 'chrome'},
+    // },
   ],
 });
