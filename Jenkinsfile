@@ -10,7 +10,7 @@ pipeline {
         NODE_VERSION = '20'
         CI = 'true'
         PLAYWRIGHT_BROWSERS_PATH = "${WORKSPACE}/.cache/ms-playwright"
-        SLACK_WEBHOOK_URL = credentials('Slack Webhook Token')
+        SLACK_WEBHOOK_URL = credentials('slack-webhook-token')
         // Email recipients - update these with your actual email addresses
         EMAIL_RECIPIENTS = 'narendrapathala@gmail.com, sarithapathala@gmail.com'
     }
@@ -243,3 +243,4 @@ ${env.PROD_EMOJI} PROD
     }
 }
 
+}
