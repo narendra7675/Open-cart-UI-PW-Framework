@@ -49,7 +49,7 @@ test("e2e crud flow test", async ({request}) => {
   console.log("======== UPDATE CALL ========");
   //step3: Update the same user by using user id = userId
   const updateBody = {
-    name: "Playwright Use",
+    name: "Playwright User",
     status: "inactive",
   };
 
